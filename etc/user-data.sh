@@ -62,3 +62,11 @@ EOF
 
 nginx -t
 systemctl start nginx
+
+# Install AWS CLI 
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
+
+
+aws deploy create-deployment --application-name node-app --deployment-group-name ec2-app --s3-location bucket=typescript-express-artifact-2,key=classic-loadbalancer/project.zip,bundleType=zip
